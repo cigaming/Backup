@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Astronomy Panel - Redesigned</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .astro-box {
+            width: 360px;
+            background: rgba(20, 0, 40, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #aa66ff;
+            border-radius: 14px;
+            box-shadow: 0 0 20px #aa66ff;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: #aa66ff;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 12px;
+        }
+
+        .location {
+            font-size: 20px;
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .moon-phase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            font-size: 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .phase-name {
+            font-weight: bold;
+        }
+
+        .phase-icon {
+            font-size: 38px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .data-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .data-label {
+            color: #ddaaff;
+            font-weight: bold;
+        }
+
+        .data-value {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            padding: 6px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+        }
+
+        .pulse-strip {
+            height: 6px;
+            background: linear-gradient(90deg, #660099, #aa66ff, #330066);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="pulse-strip"></div>
+    <div class="astro-box" id="astronomy-box">
+        <div class="header">ASTRONOMY DATA</div>
+        <div id="location" class="location">Loading...</div>
+
+        <div class="moon-phase">
+            <div id="phase-name" class="phase-name">--</div>
+            <div id="phase-icon" class="phase-icon">🌕</div>
+        </div>
+
+        <div class="content-grid">
+            <div class="data-item"><div class="data-label">🌅 Sunrise</div><div id="sunrise" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">🌇 Sunset</div><div id="sunset" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">🕒 Daylight</div><div id="daylight" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">🌙 Moonrise</div><div id="moonrise" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">🌌 Moonset</div><div id="moonset" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">✨ Illumination</div><div id="illumination" class="data-value">--%</div></div>
+        </div>
+
+        <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    </div>
+
+    <script>
+        const getElem = id => document.getElementById(id);
+        const moonIcons = {
+            'New Moon': '🌑',
+            'Waxing Crescent': '🌒',
+            'First Quarter': '🌓',
+            'Waxing Gibbous': '🌔',
+            'Full Moon': '🌕',
+            'Waning Gibbous': '🌖',
+            'Last Quarter': '🌗',
+            'Waning Crescent': '🌘',
+            'default': '🌕'
+        };
+
+        async function updateData() {
+            try {
+                const response = await fetch('astronomy.json?' + new Date().getTime());
+                const data = await response.json();
+
+                if (data && data.visible) {
+                    getElem('location').textContent = data.location || 'Unknown';
+                    getElem('phase-name').textContent = data.moonPhase || '--';
+                    getElem('phase-icon').textContent = moonIcons[data.moonPhase] || moonIcons.default;
+                    getElem('sunrise').textContent = data.sunrise || '--';
+                    getElem('sunset').textContent = data.sunset || '--';
+                    getElem('daylight').textContent = data.daylightHours || '--';
+                    getElem('moonrise').textContent = data.moonrise || '--';
+                    getElem('moonset').textContent = data.moonset || '--';
+                    getElem('illumination').textContent = data.moonIllumination !== null ? `${data.moonIllumination}%` : '--%';
+                    getElem('attribution').textContent = "Powered by " + (data.dataSource || 'WeatherAPI.com');
+                }
+            } catch (err) {
+                console.error("Failed to fetch astronomy data:", err);
+            }
+        }
+
+        updateData();
+        setInterval(updateData, 10000);
+    </script>
+</body>
+</html>

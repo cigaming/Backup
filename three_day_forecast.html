@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-Day Forecast - Redesigned</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .forecast-box {
+            width: 360px;
+            background: rgba(60, 0, 60, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #cc66ff;
+            border-radius: 14px;
+            box-shadow: 0 0 20px #cc66ff;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: #cc66ff;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 12px;
+        }
+
+        .location {
+            font-size: 20px;
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .days-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .day-box {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .day-box:last-child {
+            border-bottom: none;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .day-date, .day-temp-range {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .day-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .day-left {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+        }
+
+        .day-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+        }
+
+        .day-icon {
+            font-size: 34px;
+            margin-bottom: 5px;
+        }
+
+        .day-condition {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .day-data-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            padding: 2px 0;
+        }
+
+        .day-data-label {
+            color: #ffccff;
+        }
+
+        .day-data-value {
+            font-weight: 600;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            padding: 6px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+        }
+
+        .pulse-strip {
+            height: 6px;
+            background: linear-gradient(90deg, #660099, #cc99ff, #330066);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="pulse-strip"></div>
+    <div id="three-day-forecast-box" class="forecast-box">
+        <div class="header">3-DAY FORECAST</div>
+        <div id="location" class="location">Loading...</div>
+        <div id="days-container" class="days-container"></div>
+        <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    </div>
+
+    <script>
+        const getElem = id => document.getElementById(id);
+        const weatherIcons = {
+            'sunny': '☀️', 'partly-cloudy': '⛅', 'cloudy': '☁️', 'overcast': '☁️',
+            'mist': '🌫️', 'fog': '🌫️', 'rain': '🌧️', 'light-rain': '🌦️',
+            'heavy-rain': '⛈️', 'snow': '❄️', 'light-snow': '🌨️',
+            'heavy-snow': '❄️❄️', 'sleet': '🌨️', 'thunderstorm': '⛈️', 'default': '🌡️'
+        };
+
+        function formatDate(dateStr) {
+            try {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            } catch {
+                return dateStr || '--';
+            }
+        }
+
+        async function updateData() {
+            try {
+                const response = await fetch('three_day_forecast.json?' + new Date().getTime());
+                const data = await response.json();
+
+                if (data && data.visible) {
+                    getElem('location').textContent = data.location || 'Unknown Location';
+                    const container = getElem('days-container');
+                    container.innerHTML = '';
+
+                    if (data.days && data.days.length) {
+                        data.days.forEach(day => {
+                            const box = document.createElement('div');
+                            box.className = 'day-box';
+                            const iconKey = day.icon || 'default';
+                            const icon = weatherIcons[iconKey] || weatherIcons.default;
+
+                            box.innerHTML = `
+                                <div class="day-header">
+                                    <div class="day-date">${formatDate(day.date)}</div>
+                                    <div class="day-temp-range">${day.maxTemp || '--'}°F / ${day.minTemp || '--'}°F</div>
+                                </div>
+                                <div class="day-details">
+                                    <div class="day-left">
+                                        <div class="day-data-item"><span class="day-data-label">Rain:</span><span class="day-data-value">${day.chanceOfRain ?? '--'}%</span></div>
+                                        <div class="day-data-item"><span class="day-data-label">Wind:</span><span class="day-data-value">${day.maxWind || '--'}</span></div>
+                                        <div class="day-data-item"><span class="day-data-label">Humidity:</span><span class="day-data-value">${day.avgHumidity ?? '--'}%</span></div>
+                                        <div class="day-data-item"><span class="day-data-label">UV:</span><span class="day-data-value">${day.uvIndex || '--'}</span></div>
+                                    </div>
+                                    <div class="day-right">
+                                        <div class="day-icon">${icon}</div>
+                                        <div class="day-condition">${day.condition || '--'}</div>
+                                    </div>
+                                </div>`;
+                            container.appendChild(box);
+                        });
+                    } else {
+                        container.innerHTML = '<div class="day-box">No forecast data available</div>';
+                    }
+
+                    if (data.dataSource) {
+                        getElem('attribution').textContent = `Powered by ${data.dataSource}`;
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to fetch 3-day forecast:", err);
+            }
+        }
+
+        updateData();
+        setInterval(updateData, 10000);
+    </script>
+</body>
+</html>

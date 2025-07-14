@@ -1,0 +1,81 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        body {
+            margin: 0;
+            background-color: transparent;
+            font-family: 'Anton', sans-serif;
+        }
+        .alert-banner {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: #e0e0e0;
+            font-size: 18px;
+            text-shadow:
+                2px 2px 3px black,
+                0 0 8px rgba(255,255,255,0.15);
+        }
+        .main {
+            display: flex;
+            animation: pulse-bg 2s infinite;
+        }
+        .left {
+            width: 260px;
+            background-color: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            text-align: center;
+            border-right: 2px solid white;
+            -webkit-text-stroke: 0.5px black;
+        }
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6px 14px;
+        }
+        .row {
+            margin: 2px 0;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 6px;
+            color: #FFEB3B;
+            text-shadow: 2px 2px 3px black;
+        }
+        .color-bar {
+            height: 5px;
+            width: 100%;
+            animation: pulse-bg 2s infinite;
+        }
+        @keyframes pulse-bg {
+            0%   { background-color: #6A5ACD; }
+            50%  { background-color: #9370DB; }
+            100% { background-color: #6A5ACD; }
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-banner">
+        <div class="main">
+            <div class="left">SPECIAL WEATHER STATEMENT</div>
+            <div class="right">
+                <div class="row"><span class="label">LOCATIONS:</span> NORTHERN BLACK HILLS, SD • RAPID CITY, SD • CENTRAL BLACK HILLS, SD</div>
+                <div class="row"><span class="label">THREATS:</span> HALF INCH HAIL</div>
+            </div>
+        </div>
+        <div class="color-bar"></div>
+    </div>
+</body>
+</html>

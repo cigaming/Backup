@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Day Weather Forecast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .forecast-box {
+            width: 350px;
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(150, 50, 150, 0.9); /* Purple theme for 3-day forecast */
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .forecast-box.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .location {
+            font-size: 24px;
+            text-align: center;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .days-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .day-box {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .day-box:last-child {
+            border-bottom: none;
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .day-date {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .day-temp-range {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .day-details {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .day-left {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+        }
+        
+        .day-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+        }
+        
+        .day-icon {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        
+        .day-condition {
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .day-data-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            padding: 2px 0;
+        }
+        
+        .day-data-label {
+            color: #dddddd;
+        }
+        
+        .day-data-value {
+            font-weight: 600;
+        }
+        
+        .attribution {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .forecast-box {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .header {
+                font-size: 24px;
+            }
+            
+            .day-date, .day-temp-range {
+                font-size: 20px;
+            }
+            
+            .day-data-item {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="three-day-forecast-box" class="forecast-box" role="region" aria-label="3-Day Weather Forecast">
+    <div class="header">3-DAY FORECAST</div>
+    <div id="location" class="location">Loading...</div>
+    
+    <div id="days-container" class="days-container">
+        <!-- Day boxes will be generated dynamically -->
+    </div>
+    
+    <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+</div>
+
+<script>
+    const getElem = (id) => document.getElementById(id);
+    let dataRefreshTimer;
+    
+    // Weather icon mapping
+    const weatherIcons = {
+        'sunny': '☀️',
+        'partly-cloudy': '⛅',
+        'cloudy': '☁️',
+        'overcast': '☁️',
+        'mist': '🌫️',
+        'fog': '🌫️',
+        'rain': '🌧️',
+        'light-rain': '🌦️',
+        'heavy-rain': '⛈️',
+        'snow': '❄️',
+        'light-snow': '🌨️',
+        'heavy-snow': '❄️❄️',
+        'sleet': '🌨️',
+        'thunderstorm': '⛈️',
+        'default': '🌡️'
+    };
+    
+    function formatDate(dateStr) {
+        try {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        } catch (e) {
+            return dateStr || '--';
+        }
+    }
+    
+    async function updateData() {
+        try {
+            const response = await fetch('three_day_forecast.json?' + new Date().getTime());
+            const data = await response.json();
+            const box = getElem('three-day-forecast-box');
+            
+            if (data && data.visible) {
+                // Update location
+                getElem('location').textContent = data.location || 'Unknown Location';
+                
+                // Render days
+                const daysContainer = getElem('days-container');
+                daysContainer.innerHTML = '';
+                
+                if (data.days && data.days.length > 0) {
+                    data.days.forEach(day => {
+                        const dayBox = document.createElement('div');
+                        dayBox.className = 'day-box';
+                        
+                        const iconKey = day.icon || 'default';
+                        const icon = weatherIcons[iconKey] || weatherIcons.default;
+                        
+                        dayBox.innerHTML = `
+                            <div class="day-header">
+                                <div class="day-date">${formatDate(day.date)}</div>
+                                <div class="day-temp-range">${day.maxTemp || '--'}°F / ${day.minTemp || '--'}°F</div>
+                            </div>
+                            <div class="day-details">
+                                <div class="day-left">
+                                    <div class="day-data-item">
+                                        <span class="day-data-label">Rain:</span>
+                                        <span class="day-data-value">${day.chanceOfRain !== null ? day.chanceOfRain + '%' : '--'}</span>
+                                    </div>
+                                    <div class="day-data-item">
+                                        <span class="day-data-label">Wind:</span>
+                                        <span class="day-data-value">${day.maxWind || '--'}</span>
+                                    </div>
+                                    <div class="day-data-item">
+                                        <span class="day-data-label">Humidity:</span>
+                                        <span class="day-data-value">${day.avgHumidity !== null ? day.avgHumidity + '%' : '--'}</span>
+                                    </div>
+                                    <div class="day-data-item">
+                                        <span class="day-data-label">UV Index:</span>
+                                        <span class="day-data-value">${day.uvIndex || '--'}</span>
+                                    </div>
+                                </div>
+                                <div class="day-right">
+                                    <div class="day-icon">${icon}</div>
+                                    <div class="day-condition">${day.condition || '--'}</div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        daysContainer.appendChild(dayBox);
+                    });
+                } else {
+                    daysContainer.innerHTML = '<div class="day-box">No forecast data available</div>';
+                }
+                
+                // Update attribution if provided
+                if (data.dataSource) {
+                    getElem('attribution').textContent = `Powered by ${data.dataSource}`;
+                }
+                
+                // Show the box with animation
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 10);
+            } else {
+                // Hide the box with animation
+                box.classList.remove('visible');
+                setTimeout(() => box.style.display = 'none', 300);
+            }
+        } catch (error) {
+            console.error('Error fetching 3-day forecast data:', error);
+            getElem('three-day-forecast-box').classList.remove('visible');
+            setTimeout(() => getElem('three-day-forecast-box').style.display = 'none', 300);
+        }
+    }
+
+    // Initial load
+    updateData();
+    
+    // Set up interval for updates
+    dataRefreshTimer = setInterval(updateData, 5000);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearInterval(dataRefreshTimer);
+    });
+</script>
+
+</body>
+</html>

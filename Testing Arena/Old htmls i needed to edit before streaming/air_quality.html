@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Index</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .aqi-box {
+            width: 350px;
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(150, 75, 0, 0.9); /* Orange/brown theme for air quality */
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .aqi-box.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .location {
+            font-size: 24px;
+            text-align: center;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .aqi-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .aqi-level {
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        .aqi-value {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: right;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 10px;
+            font-size: 22px;
+            gap: 5px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+            padding: 2px 5px;
+        }
+        
+        .data-item:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #dddddd; 
+        }
+
+        .data-value {
+            font-weight: 800;
+            text-align: right;
+        }
+        
+        .attribution {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* AQI color coding */
+        .aqi-good {
+            color: #00e400;
+        }
+        
+        .aqi-moderate {
+            color: #ffff00;
+        }
+        
+        .aqi-unhealthy-sensitive {
+            color: #ff7e00;
+        }
+        
+        .aqi-unhealthy {
+            color: #ff0000;
+        }
+        
+        .aqi-very-unhealthy {
+            color: #99004c;
+        }
+        
+        .aqi-hazardous {
+            color: #7e0023;
+        }
+        
+        /* Fixed loading spinner - hide by default and with !important */
+        .loading {
+            display: none !important;
+            visibility: hidden;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #dddddd;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 5px auto;
+            display: none !important;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .aqi-box {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .header {
+                font-size: 24px;
+            }
+            
+            .content-grid {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="aqi-box" class="aqi-box" role="region" aria-label="Air Quality Information">
+    <div class="header">AIR QUALITY INDEX</div>
+    <div id="location" class="location">Loading...</div>
+    
+    <div class="aqi-summary">
+        <div id="aqi-level" class="aqi-level">--</div>
+        <div id="aqi-value" class="aqi-value">--</div>
+    </div>
+    
+    <div class="content-grid">
+        <div class="data-item">
+            <div class="data-label">Carbon Monoxide:</div>
+            <div id="co" class="data-value">-- μg/m³</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Ozone:</div>
+            <div id="o3" class="data-value">-- μg/m³</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Nitrogen Dioxide:</div>
+            <div id="no2" class="data-value">-- μg/m³</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Sulfur Dioxide:</div>
+            <div id="so2" class="data-value">-- μg/m³</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">PM2.5:</div>
+            <div id="pm2_5" class="data-value">-- μg/m³</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">PM10:</div>
+            <div id="pm10" class="data-value">-- μg/m³</div>
+        </div>
+    </div>
+    
+    <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    
+    <!-- Removed the loading div completely -->
+</div>
+
+<script>
+    const getElem = (id) => document.getElementById(id);
+    let dataRefreshTimer;
+    
+    // AQI level mapping
+    const aqiLevels = {
+        1: { name: "GOOD", class: "aqi-good" },
+        2: { name: "MODERATE", class: "aqi-moderate" },
+        3: { name: "UNHEALTHY FOR SENSITIVE GROUPS", class: "aqi-unhealthy-sensitive" },
+        4: { name: "UNHEALTHY", class: "aqi-unhealthy" },
+        5: { name: "VERY UNHEALTHY", class: "aqi-very-unhealthy" },
+        6: { name: "HAZARDOUS", class: "aqi-hazardous" }
+    };
+    
+    async function updateData() {
+        try {
+            const response = await fetch('air_quality.json?' + new Date().getTime());
+            const data = await response.json();
+            const box = getElem('aqi-box');
+            
+            if (data && data.visible) {
+                // Update all fields
+                getElem('location').textContent = data.location || 'Unknown Location';
+                
+                // Set AQI level and value with appropriate color
+                const aqiValue = data.aqiValue || 0;
+                const aqiIndex = data.aqiIndex || 0;
+                const aqiInfo = aqiLevels[aqiIndex] || { name: "UNKNOWN", class: "" };
+                
+                const aqiLevelElem = getElem('aqi-level');
+                const aqiValueElem = getElem('aqi-value');
+                
+                aqiLevelElem.textContent = aqiInfo.name;
+                aqiValueElem.textContent = aqiValue;
+                
+                // Remove all AQI classes first
+                Object.values(aqiLevels).forEach(level => {
+                    aqiLevelElem.classList.remove(level.class);
+                    aqiValueElem.classList.remove(level.class);
+                });
+                
+                // Add appropriate class
+                if (aqiInfo.class) {
+                    aqiLevelElem.classList.add(aqiInfo.class);
+                    aqiValueElem.classList.add(aqiInfo.class);
+                }
+                
+                // Update pollutant values
+                getElem('co').textContent = data.co || '-- μg/m³';
+                getElem('o3').textContent = data.o3 || '-- μg/m³';
+                getElem('no2').textContent = data.no2 || '-- μg/m³';
+                getElem('so2').textContent = data.so2 || '-- μg/m³';
+                getElem('pm2_5').textContent = data.pm2_5 || '-- μg/m³';
+                getElem('pm10').textContent = data.pm10 || '-- μg/m³';
+                
+                // Update attribution if provided
+                if (data.dataSource) {
+                    getElem('attribution').textContent = `Powered by ${data.dataSource}`;
+                }
+                
+                // Show the box with animation
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 10);
+            } else {
+                // Hide the box with animation
+                box.classList.remove('visible');
+                setTimeout(() => box.style.display = 'none', 300);
+            }
+        } catch (error) {
+            console.error('Error fetching air quality data:', error);
+            getElem('aqi-box').classList.remove('visible');
+            setTimeout(() => getElem('aqi-box').style.display = 'none', 300);
+        }
+    }
+
+    // Initial load
+    updateData();
+    
+    // Set up interval for updates
+    dataRefreshTimer = setInterval(updateData, 5000);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearInterval(dataRefreshTimer);
+    });
+</script>
+
+</body>
+</html>
+

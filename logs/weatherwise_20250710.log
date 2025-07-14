@@ -1,0 +1,126 @@
+2025-07-10 00:00:52,168 - root - INFO - Default configuration created at C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-10 00:00:52,180 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-10 00:00:52,191 - root - INFO - Previous state loaded
+2025-07-10 00:00:52,191 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 00:00:52,878 - root - INFO - Weather Activity Score: 30.0 (based on 4 warnings)
+2025-07-10 00:00:52,878 - root - INFO - Showing warning 1/4: Severe Thunderstorm Warning
+2025-07-10 19:59:08,366 - root - INFO - Default configuration created at C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-10 19:59:08,378 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-10 19:59:08,378 - root - INFO - No previous state found, starting fresh
+2025-07-10 19:59:08,378 - root - INFO - 
+==================================================
+Mode: IDLE
+2025-07-10 19:59:09,123 - root - INFO - Weather Activity Score: 195.0 (based on 26 warnings)
+2025-07-10 19:59:09,123 - root - INFO - --> Warnings are present. Switching to WARNINGS mode.
+2025-07-10 19:59:09,123 - root - INFO - Showing warning 1/26: Severe Thunderstorm Warning
+2025-07-10 19:59:23,169 - root - INFO - ALERT: Processing warning for 'Otero County, NM'
+2025-07-10 19:59:24,177 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 19:59:25,679 - root - INFO - 
+>>> ACTION: Navigating to 'Otero County, NM'
+2025-07-10 19:59:27,181 - root - ERROR - ERROR: Could not focus window: Error code from Windows: 0 - The operation completed successfully.
+2025-07-10 19:59:28,986 - root - INFO - ...Cursor parked.
+2025-07-10 19:59:29,442 - root - INFO - Showing current conditions for Los Lunas, NM during warning
+2025-07-10 19:59:39,444 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 19:59:40,150 - root - INFO - Weather Activity Score: 195.0 (based on 26 warnings)
+2025-07-10 20:02:02,129 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-10 20:02:02,142 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-10 20:02:02,153 - root - INFO - Previous state loaded
+2025-07-10 20:02:02,153 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:02:03,354 - root - INFO - Weather Activity Score: 120.0 (based on 16 warnings)
+2025-07-10 20:02:03,355 - root - INFO - Showing warning 2/16: Severe Thunderstorm Warning
+2025-07-10 20:02:14,475 - root - INFO - ALERT: Processing warning for 'De Baca County, NM'
+2025-07-10 20:02:17,478 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:02:18,980 - root - INFO - 
+>>> ACTION: Navigating to 'De Baca County, NM'
+2025-07-10 20:02:20,482 - root - ERROR - ERROR: Could not focus window: Error code from Windows: 0 - The operation completed successfully.
+2025-07-10 20:16:43,961 - root - INFO - Default configuration created at C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-10 20:16:43,973 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-10 20:16:43,973 - root - INFO - No previous state found, starting fresh
+2025-07-10 20:16:43,974 - root - INFO - 
+==================================================
+Mode: IDLE
+2025-07-10 20:16:45,068 - root - INFO - Weather Activity Score: 90.0 (based on 12 warnings)
+2025-07-10 20:16:45,068 - root - INFO - --> Warnings are present. Switching to WARNINGS mode.
+2025-07-10 20:16:45,068 - root - INFO - Showing warning 1/12: Severe Thunderstorm Warning
+2025-07-10 20:16:45,514 - root - INFO - ALERT: Processing warning for 'Otero County, NM'
+2025-07-10 20:16:48,519 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:16:50,020 - root - INFO - 
+>>> ACTION: Navigating to 'Otero County, NM'
+2025-07-10 20:16:54,525 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:17:06,840 - root - INFO - SUCCESS: Search executed.
+2025-07-10 20:17:09,843 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:17:09,844 - root - INFO - ...Zooming out 2 step(s)
+2025-07-10 20:17:11,845 - root - INFO - SUCCESS: Zoom applied.
+2025-07-10 20:17:11,846 - root - INFO - ...Toggling radar playback.
+2025-07-10 20:17:14,151 - root - INFO - ...Cursor parked.
+2025-07-10 20:17:14,596 - root - INFO - Showing current conditions for Roswell, NM during warning
+2025-07-10 20:17:24,597 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:17:25,250 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:17:35,252 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:17:35,571 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:17:45,572 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:17:45,924 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:17:45,924 - root - INFO - Showing warning 2/11: Severe Thunderstorm Warning
+2025-07-10 20:17:46,250 - root - INFO - ALERT: Processing warning for 'Lincoln County, NM'
+2025-07-10 20:17:49,257 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:17:50,758 - root - INFO - 
+>>> ACTION: Navigating to 'Lincoln County, NM'
+2025-07-10 20:17:55,263 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:18:07,681 - root - INFO - SUCCESS: Search executed.
+2025-07-10 20:18:10,684 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:18:10,684 - root - INFO - ...Zooming out 2 step(s)
+2025-07-10 20:18:12,687 - root - INFO - SUCCESS: Zoom applied.
+2025-07-10 20:18:12,687 - root - INFO - ...Toggling radar playback.
+2025-07-10 20:18:14,992 - root - INFO - ...Cursor parked.
+2025-07-10 20:18:15,527 - root - INFO - Showing current conditions for Los Lunas, NM during warning
+2025-07-10 20:18:25,528 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:18:26,134 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:18:36,135 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:18:36,461 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:18:46,462 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:18:46,802 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:18:46,802 - root - INFO - Showing warning 3/11: Severe Thunderstorm Warning
+2025-07-10 20:18:47,147 - root - INFO - ALERT: Processing warning for 'Finney County, KS'
+2025-07-10 20:18:50,154 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:18:51,655 - root - INFO - 
+>>> ACTION: Navigating to 'Finney County, KS'
+2025-07-10 20:18:56,159 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:19:08,523 - root - INFO - SUCCESS: Search executed.
+2025-07-10 20:19:11,526 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-10 20:19:11,526 - root - INFO - ...Zooming out 2 step(s)
+2025-07-10 20:19:13,528 - root - INFO - SUCCESS: Zoom applied.
+2025-07-10 20:19:13,528 - root - INFO - ...Toggling radar playback.
+2025-07-10 20:19:15,833 - root - INFO - ...Cursor parked.
+2025-07-10 20:19:16,310 - root - INFO - Showing current conditions for Dodge City, KS during warning
+2025-07-10 20:19:26,312 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:19:26,883 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:19:36,884 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:19:37,220 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:19:47,222 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-10 20:19:47,607 - root - INFO - Weather Activity Score: 82.5 (based on 11 warnings)
+2025-07-10 20:19:47,608 - root - INFO - Showing warning 4/11: Severe Thunderstorm Warning
+2025-07-10 20:19:47,975 - root - INFO - ALERT: Processing warning for 'Phillips County, KS'

@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🚨 Weather Alert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .infobox {
+            width: 380px;
+            border: 3px solid white;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .infobox.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 32px;
+            padding: 10px;
+            background: #cc0000;
+            color: white;
+            text-align: center;
+            animation: flashHeader 1.5s infinite alternate;
+        }
+
+        @keyframes flashHeader {
+            from { background-color: #cc0000; }
+            to { background-color: #ff0000; }
+        }
+
+        .pds-indicator {
+            text-align: center;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            background: #990099;
+            animation: pulsePDS 2s infinite;
+        }
+
+        @keyframes pulsePDS {
+            0% { opacity: 1; box-shadow: 0 0 10px #ff33ff; }
+            50% { opacity: 0.6; box-shadow: 0 0 20px #ff99ff; }
+            100% { opacity: 1; box-shadow: 0 0 10px #ff33ff; }
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            padding: 12px;
+            font-size: 22px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            color: #cccccc;
+            font-weight: 600;
+        }
+
+        .data-value {
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            background: rgba(255,255,255,0.1);
+            padding: 5px;
+            color: #aaa;
+        }
+
+        @media (max-width: 400px) {
+            .infobox {
+                width: 95%;
+                margin: auto;
+            }
+            .header { font-size: 24px; }
+            .content-grid { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div id="infobox" class="infobox">
+    <div id="header" class="header">WEATHER WARNING</div>
+    <div id="pds-indicator" class="pds-indicator" style="display: none;">⚠️ PARTICULARLY DANGEROUS SITUATION</div>
+    <div class="content-grid">
+        <div class="data-item"><div class="data-label">📍 Area:</div><div id="area" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">👥 Population:</div><div id="population" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">📊 Severity:</div><div id="severity" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">🔍 Certainty:</div><div id="certainty" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">🌪️ Wind:</div><div id="wind" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">🌨️ Hail:</div><div id="hail" class="data-value">-</div></div>
+        <div class="data-item"><div class="data-label">⌛ Expires:</div><div id="expires" class="data-value">-</div></div>
+    </div>
+    <div class="attribution">🔗 Powered by WeatherAPI</div>
+</div>
+
+<script>
+    const getElem = id => document.getElementById(id);
+    async function updateData() {
+        try {
+            const res = await fetch('warning_data.json?' + new Date().getTime());
+            const data = await res.json();
+            const box = getElem('infobox');
+            const pds = getElem('pds-indicator');
+
+            if (data && data.visible) {
+                getElem('header').textContent = data.type || 'N/A';
+                getElem('area').textContent = data.area || 'N/A';
+                getElem('population').textContent = data.population || 'N/A';
+                getElem('severity').textContent = data.severity || 'N/A';
+                getElem('certainty').textContent = data.certainty || 'N/A';
+                getElem('wind').textContent = data.wind || 'N/A';
+                getElem('hail').textContent = data.hail || 'N/A';
+                getElem('expires').textContent = data.expires || 'N/A';
+
+                if (data.isPDS) {
+                    pds.style.display = 'block';
+                } else {
+                    pds.style.display = 'none';
+                }
+
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 20);
+            } else {
+                getElem('infobox').classList.remove('visible');
+                setTimeout(() => getElem('infobox').style.display = 'none', 300);
+            }
+        } catch (err) {
+            console.error('Failed to fetch warning data:', err);
+        }
+    }
+
+    updateData();
+    setInterval(updateData, 1000);
+</script>
+</body>
+</html>

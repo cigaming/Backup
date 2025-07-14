@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Forecast - Redesigned</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .forecast-box {
+            width: 360px;
+            background: rgba(0, 60, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #33ff66;
+            border-radius: 14px;
+            box-shadow: 0 0 20px #33ff66;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: #33ff66;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 12px;
+        }
+
+        .location {
+            font-size: 20px;
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .forecast-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            font-size: 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .temp-range {
+            font-size: 24px;
+            color: #ffff66;
+        }
+
+        .forecast-icon {
+            font-size: 36px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .data-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .data-label {
+            color: #99ffbb;
+            font-weight: bold;
+        }
+
+        .data-value {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            padding: 6px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+        }
+
+        .pulse-strip {
+            height: 6px;
+            background: linear-gradient(90deg, #009933, #66ff99, #003311);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="pulse-strip"></div>
+    <div class="forecast-box" id="forecast-box">
+        <div class="header">TODAY'S FORECAST</div>
+        <div id="location" class="location">Loading...</div>
+
+        <div class="forecast-summary">
+            <div id="temp-range" class="temp-range">--°F / --°F</div>
+            <div id="forecast-icon" class="forecast-icon">🌡️</div>
+        </div>
+
+        <div class="content-grid">
+            <div class="data-item"><div class="data-label">🌤️ Condition</div><div id="condition" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">🌧️ Rain</div><div id="rain-chance" class="data-value">--%</div></div>
+            <div class="data-item"><div class="data-label">❄️ Snow</div><div id="snow-chance" class="data-value">--%</div></div>
+            <div class="data-item"><div class="data-label">💨 Wind</div><div id="max-wind" class="data-value">-- MPH</div></div>
+            <div class="data-item"><div class="data-label">🌊 Precip</div><div id="precipitation" class="data-value">-- in</div></div>
+            <div class="data-item"><div class="data-label">💧 Humidity</div><div id="avg-humidity" class="data-value">--%</div></div>
+            <div class="data-item"><div class="data-label">🔆 UV</div><div id="uv-index" class="data-value">--</div></div>
+        </div>
+
+        <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    </div>
+
+    <script>
+        const getElem = id => document.getElementById(id);
+        const weatherIcons = {
+            'sunny': '☀️', 'partly-cloudy': '⛅', 'cloudy': '☁️', 'overcast': '☁️',
+            'mist': '🌫️', 'fog': '🌫️', 'rain': '🌧️', 'light-rain': '🌦️',
+            'heavy-rain': '⛈️', 'snow': '❄️', 'light-snow': '🌨️',
+            'heavy-snow': '❄️❄️', 'sleet': '🌨️', 'thunderstorm': '⛈️', 'default': '🌡️'
+        };
+
+        async function updateData() {
+            try {
+                const response = await fetch('daily_forecast.json?' + new Date().getTime());
+                const data = await response.json();
+
+                if (data && data.visible) {
+                    getElem('location').textContent = data.location || 'Unknown Location';
+                    getElem('temp-range').textContent = `${data.maxTemp || '--'}°F / ${data.minTemp || '--'}°F`;
+                    const iconKey = data.icon || 'default';
+                    getElem('forecast-icon').textContent = weatherIcons[iconKey] || weatherIcons.default;
+
+                    getElem('condition').textContent = data.condition || '--';
+                    getElem('rain-chance').textContent = data.chanceOfRain !== null ? `${data.chanceOfRain}%` : '--%';
+                    getElem('snow-chance').textContent = data.chanceOfSnow !== null ? `${data.chanceOfSnow}%` : '--%';
+                    getElem('max-wind').textContent = data.maxWind || '-- MPH';
+                    getElem('precipitation').textContent = data.totalPrecip || '-- in';
+                    getElem('avg-humidity').textContent = data.avgHumidity !== null ? `${data.avgHumidity}%` : '--%';
+                    getElem('uv-index').textContent = data.uvIndex || '--';
+                    getElem('attribution').textContent = "Powered by " + (data.dataSource || 'WeatherAPI.com');
+                }
+            } catch (err) {
+                console.error("Failed to fetch forecast data:", err);
+            }
+        }
+
+        updateData();
+        setInterval(updateData, 10000);
+    </script>
+</body>
+</html>

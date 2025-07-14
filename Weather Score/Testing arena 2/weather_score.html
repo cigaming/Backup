@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <title>Weather Activity Score</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .label {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .value {
+            font-size: 24px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>⚡ Weather Activity Score</h1>
+    <div class="section">
+        <span class="label">Total Score:</span>
+        <div class="score">{score_data['total_score']}</div>
+    </div>
+    <div class="section">
+        <span class="label">Severity Counts:</span>
+        <ul>
+            <li class='value'>{k}: {v}</li><li class='value'>{k}: {v}</li><li class='value'>{k}: {v}</li><li class='value'>{k}: {v}</li><li class='value'>{k}: {v}</li>
+        </ul>
+    </div>
+    <div class="section">
+        <span class="label">Type Counts:</span>
+        <ul>
+            <li class='value'>{k}: {v}</li>
+        </ul>
+    </div>
+    <div class="section">
+        <span class="label">PDS Count:</span>
+        <span class="value">{score_data['pds_count']}</span>
+    </div>
+    <div class="section">
+        <span class="label">Timestamp:</span>
+        <span class="value">{score_data['timestamp']}</span>
+    </div>
+</body>
+</html>

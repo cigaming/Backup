@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy Information</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .astronomy-box {
+            width: 350px;
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(70, 40, 120, 0.9); /* Purple theme for astronomy */
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .astronomy-box.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .location {
+            font-size: 24px;
+            text-align: center;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .moon-phase {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .phase-name {
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .phase-icon {
+            font-size: 36px;
+            text-align: right;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 10px;
+            font-size: 22px;
+            gap: 5px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+            padding: 2px 5px;
+        }
+        
+        .data-item:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #dddddd; 
+        }
+
+        .data-value {
+            font-weight: 800;
+            text-align: right;
+        }
+        
+        .attribution {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Fixed loading spinner - hide by default and with !important */
+        .loading {
+            display: none !important;
+            visibility: hidden;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #dddddd;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 5px auto;
+            display: none !important;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .astronomy-box {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .header {
+                font-size: 24px;
+            }
+            
+            .content-grid {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="astronomy-box" class="astronomy-box" role="region" aria-label="Astronomy Information">
+    <div class="header">ASTRONOMY DATA</div>
+    <div id="location" class="location">Loading...</div>
+    
+    <div class="moon-phase">
+        <div id="phase-name" class="phase-name">--</div>
+        <div id="phase-icon" class="phase-icon">🌕</div>
+    </div>
+    
+    <div class="content-grid">
+        <div class="data-item">
+            <div class="data-label">Sunrise:</div>
+            <div id="sunrise" class="data-value">--</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Sunset:</div>
+            <div id="sunset" class="data-value">--</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Daylight:</div>
+            <div id="daylight" class="data-value">-- hrs -- min</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Moonrise:</div>
+            <div id="moonrise" class="data-value">--</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Moonset:</div>
+            <div id="moonset" class="data-value">--</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Moon Illumination:</div>
+            <div id="illumination" class="data-value">--%</div>
+        </div>
+    </div>
+    
+    <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    
+    <!-- Removed the loading div completely -->
+</div>
+
+<script>
+    const getElem = (id) => document.getElementById(id);
+    let dataRefreshTimer;
+    
+    // Moon phase icons
+    const moonIcons = {
+        'New Moon': '🌑',
+        'Waxing Crescent': '🌒',
+        'First Quarter': '🌓',
+        'Waxing Gibbous': '🌔',
+        'Full Moon': '🌕',
+        'Waning Gibbous': '🌖',
+        'Last Quarter': '🌗',
+        'Waning Crescent': '🌘',
+        'default': '🌕'
+    };
+    
+    async function updateData() {
+        try {
+            const response = await fetch('astronomy.json?' + new Date().getTime());
+            const data = await response.json();
+            const box = getElem('astronomy-box');
+            
+            if (data && data.visible) {
+                // Update all fields
+                getElem('location').textContent = data.location || 'Unknown Location';
+                getElem('phase-name').textContent = data.moonPhase || '--';
+                
+                // Set moon phase icon
+                const phaseKey = data.moonPhase || 'default';
+                getElem('phase-icon').textContent = moonIcons[phaseKey] || moonIcons.default;
+                
+                getElem('sunrise').textContent = data.sunrise || '--';
+                getElem('sunset').textContent = data.sunset || '--';
+                getElem('daylight').textContent = data.daylightHours || '-- hrs -- min';
+                getElem('moonrise').textContent = data.moonrise || '--';
+                getElem('moonset').textContent = data.moonset || '--';
+                getElem('illumination').textContent = data.moonIllumination !== null ? `${data.moonIllumination}%` : '--%';
+                
+                // Update attribution if provided
+                if (data.dataSource) {
+                    getElem('attribution').textContent = `Powered by ${data.dataSource}`;
+                }
+                
+                // Show the box with animation
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 10);
+            } else {
+                // Hide the box with animation
+                box.classList.remove('visible');
+                setTimeout(() => box.style.display = 'none', 300);
+            }
+        } catch (error) {
+            console.error('Error fetching astronomy data:', error);
+            getElem('astronomy-box').classList.remove('visible');
+            setTimeout(() => getElem('astronomy-box').style.display = 'none', 300);
+        }
+    }
+
+    // Initial load
+    updateData();
+    
+    // Set up interval for updates
+    dataRefreshTimer = setInterval(updateData, 5000);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearInterval(dataRefreshTimer);
+    });
+</script>
+
+</body>
+</html>

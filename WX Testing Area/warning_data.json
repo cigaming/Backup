@@ -1,0 +1,12 @@
+{
+    "visible": true,
+    "type": "SEVERE T-STORM WARNING",
+    "area": "Brown, SD; Edmunds, SD",
+    "population": "N/A",
+    "severity": "Severe",
+    "certainty": "Observed",
+    "wind": "60 MPH",
+    "hail": null,
+    "expires": "10:15 PM CDT",
+    "isPDS": false
+}

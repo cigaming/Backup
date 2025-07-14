@@ -1,0 +1,15 @@
+{
+    "visible": true,
+    "location": "Vermillion, South Dakota",
+    "temperature": 89.1,
+    "feelsLike": 92.9,
+    "description": "Partly cloudy",
+    "wind": "SSE 9.6 MPH",
+    "windGust": "13.4 MPH",
+    "humidity": "63%",
+    "dewpoint": 71.5,
+    "pressure": "29.92 in",
+    "visibility": "9.0 miles",
+    "uvIndex": "4.0 (Moderate)",
+    "dataSource": "WeatherAPI.com"
+}

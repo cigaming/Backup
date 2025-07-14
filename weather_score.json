@@ -1,0 +1,15 @@
+{
+    "total_score": 7.5,
+    "severity_counts": {
+        "Extreme": 0,
+        "Severe": 1,
+        "Moderate": 0,
+        "Minor": 0,
+        "Unknown": 0
+    },
+    "type_counts": {
+        "Severe Thunderstorm Warning": 1
+    },
+    "pds_count": 0,
+    "timestamp": "2025-07-13T23:44:23.976162"
+}

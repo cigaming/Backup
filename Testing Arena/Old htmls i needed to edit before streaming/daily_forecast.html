@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Weather Forecast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .forecast-box {
+            width: 350px;
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(50, 150, 50, 0.9); /* Green theme for forecast */
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .forecast-box.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .location {
+            font-size: 24px;
+            text-align: center;
+            padding: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .forecast-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .temp-range {
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        .forecast-icon {
+            font-size: 36px;
+            text-align: right;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 10px;
+            font-size: 22px;
+            gap: 5px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+            padding: 2px 5px;
+        }
+        
+        .data-item:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #dddddd; 
+        }
+
+        .data-value {
+            font-weight: 800;
+            text-align: right;
+        }
+        
+        .attribution {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Fixed loading spinner - hide by default and with !important */
+        .loading {
+            display: none !important;
+            visibility: hidden;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #dddddd;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 5px auto;
+            display: none !important;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .forecast-box {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .header {
+                font-size: 24px;
+            }
+            
+            .content-grid {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="forecast-box" class="forecast-box" role="region" aria-label="Daily Weather Forecast">
+    <div class="header">TODAY'S FORECAST</div>
+    <div id="location" class="location">Loading...</div>
+    
+    <div class="forecast-summary">
+        <div id="temp-range" class="temp-range">--°F / --°F</div>
+        <div id="forecast-icon" class="forecast-icon">☀️</div>
+    </div>
+    
+    <div class="content-grid">
+        <div class="data-item">
+            <div class="data-label">Condition:</div>
+            <div id="condition" class="data-value">--</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Chance of Rain:</div>
+            <div id="rain-chance" class="data-value">--%</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Chance of Snow:</div>
+            <div id="snow-chance" class="data-value">--%</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Max Wind:</div>
+            <div id="max-wind" class="data-value">-- MPH</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Total Precip:</div>
+            <div id="precipitation" class="data-value">-- in</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Avg Humidity:</div>
+            <div id="avg-humidity" class="data-value">--%</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">UV Index:</div>
+            <div id="uv-index" class="data-value">--</div>
+        </div>
+    </div>
+    
+    <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    
+    <!-- Removed the loading div completely -->
+</div>
+
+<script>
+    const getElem = (id) => document.getElementById(id);
+    let dataRefreshTimer;
+    
+    // Weather icon mapping
+    const weatherIcons = {
+        'sunny': '☀️',
+        'partly-cloudy': '⛅',
+        'cloudy': '☁️',
+        'overcast': '☁️',
+        'mist': '🌫️',
+        'fog': '🌫️',
+        'rain': '🌧️',
+        'light-rain': '🌦️',
+        'heavy-rain': '⛈️',
+        'snow': '❄️',
+        'light-snow': '🌨️',
+        'heavy-snow': '❄️❄️',
+        'sleet': '🌨️',
+        'thunderstorm': '⛈️',
+        'default': '🌡️'
+    };
+    
+    async function updateData() {
+        try {
+            const response = await fetch('daily_forecast.json?' + new Date().getTime());
+            const data = await response.json();
+            const box = getElem('forecast-box');
+            
+            if (data && data.visible) {
+                // Update all fields
+                getElem('location').textContent = data.location || 'Unknown Location';
+                getElem('temp-range').textContent = `${data.maxTemp || '--'}°F / ${data.minTemp || '--'}°F`;
+                
+                // Set weather icon
+                const iconKey = data.icon || 'default';
+                getElem('forecast-icon').textContent = weatherIcons[iconKey] || weatherIcons.default;
+                
+                getElem('condition').textContent = data.condition || '--';
+                getElem('rain-chance').textContent = data.chanceOfRain !== null ? `${data.chanceOfRain}%` : '--%';
+                getElem('snow-chance').textContent = data.chanceOfSnow !== null ? `${data.chanceOfSnow}%` : '--%';
+                getElem('max-wind').textContent = data.maxWind || '-- MPH';
+                getElem('precipitation').textContent = data.totalPrecip || '-- in';
+                getElem('avg-humidity').textContent = data.avgHumidity !== null ? `${data.avgHumidity}%` : '--%';
+                getElem('uv-index').textContent = data.uvIndex || '--';
+                
+                // Update attribution if provided
+                if (data.dataSource) {
+                    getElem('attribution').textContent = `Powered by ${data.dataSource}`;
+                }
+                
+                // Show the box with animation
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 10);
+            } else {
+                // Hide the box with animation
+                box.classList.remove('visible');
+                setTimeout(() => box.style.display = 'none', 300);
+            }
+        } catch (error) {
+            console.error('Error fetching forecast data:', error);
+            getElem('forecast-box').classList.remove('visible');
+            setTimeout(() => getElem('forecast-box').style.display = 'none', 300);
+        }
+    }
+
+    // Initial load
+    updateData();
+    
+    // Set up interval for updates
+    dataRefreshTimer = setInterval(updateData, 5000);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearInterval(dataRefreshTimer);
+    });
+</script>
+
+</body>
+</html>
+

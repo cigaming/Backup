@@ -1,0 +1,2 @@
+python weather_score_graph_updater.py
+pause

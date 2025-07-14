@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Air Quality Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .aqi-box {
+            width: 360px;
+            background: rgba(50, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 2px solid #ff6600;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #ff6600;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: #ff6600;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .location {
+            font-size: 20px;
+            text-align: center;
+            padding: 6px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .aqi-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            font-size: 22px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .aqi-level {
+            font-weight: bold;
+        }
+
+        .aqi-value {
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .data-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .data-label {
+            color: #ffcc99;
+            font-weight: bold;
+        }
+
+        .data-value {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            padding: 6px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+        }
+
+        .pulse-strip {
+            height: 6px;
+            background: linear-gradient(90deg, #ff0000, #ffaa00, #00cc00);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .aqi-good { color: #00e400; }
+        .aqi-moderate { color: #ffff00; }
+        .aqi-unhealthy-sensitive { color: #ff7e00; }
+        .aqi-unhealthy { color: #ff0000; }
+        .aqi-very-unhealthy { color: #99004c; }
+        .aqi-hazardous { color: #7e0023; }
+    </style>
+</head>
+<body>
+    <div class="pulse-strip"></div>
+    <div class="aqi-box" id="aqi-box">
+        <div class="header">AIR QUALITY INDEX</div>
+        <div id="location" class="location">Loading...</div>
+
+        <div class="aqi-summary">
+            <div id="aqi-level" class="aqi-level">--</div>
+            <div id="aqi-value" class="aqi-value">--</div>
+        </div>
+
+        <div class="content-grid">
+            <div class="data-item"><div class="data-label">CO</div><div id="co" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">O₃</div><div id="o3" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">NO₂</div><div id="no2" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">SO₂</div><div id="so2" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">PM2.5</div><div id="pm2_5" class="data-value">--</div></div>
+            <div class="data-item"><div class="data-label">PM10</div><div id="pm10" class="data-value">--</div></div>
+        </div>
+
+        <div id="attribution" class="attribution">Powered by WeatherAPI.com</div>
+    </div>
+
+    <script>
+        const getElem = id => document.getElementById(id);
+        const aqiLevels = {
+            1: { name: "GOOD", class: "aqi-good" },
+            2: { name: "MODERATE", class: "aqi-moderate" },
+            3: { name: "UNHEALTHY FOR SENSITIVE", class: "aqi-unhealthy-sensitive" },
+            4: { name: "UNHEALTHY", class: "aqi-unhealthy" },
+            5: { name: "VERY UNHEALTHY", class: "aqi-very-unhealthy" },
+            6: { name: "HAZARDOUS", class: "aqi-hazardous" }
+        };
+
+        async function updateData() {
+            try {
+                const response = await fetch('air_quality.json?' + new Date().getTime());
+                const data = await response.json();
+
+                if (data && data.visible) {
+                    getElem('location').textContent = data.location || 'Unknown';
+                    const aqiLevel = aqiLevels[data.aqiIndex] || { name: 'UNKNOWN', class: '' };
+
+                    const levelElem = getElem('aqi-level');
+                    const valueElem = getElem('aqi-value');
+
+                    levelElem.textContent = aqiLevel.name;
+                    valueElem.textContent = data.aqiValue || '--';
+
+                    Object.values(aqiLevels).forEach(lvl => {
+                        levelElem.classList.remove(lvl.class);
+                        valueElem.classList.remove(lvl.class);
+                    });
+
+                    levelElem.classList.add(aqiLevel.class);
+                    valueElem.classList.add(aqiLevel.class);
+
+                    getElem('co').textContent = data.co || '--';
+                    getElem('o3').textContent = data.o3 || '--';
+                    getElem('no2').textContent = data.no2 || '--';
+                    getElem('so2').textContent = data.so2 || '--';
+                    getElem('pm2_5').textContent = data.pm2_5 || '--';
+                    getElem('pm10').textContent = data.pm10 || '--';
+                    getElem('attribution').textContent = "Powered by " + (data.dataSource || 'WeatherAPI.com');
+                }
+            } catch (err) {
+                console.error("Failed to fetch air quality data:", err);
+            }
+        }
+
+        updateData();
+        setInterval(updateData, 10000);
+    </script>
+</body>
+</html>

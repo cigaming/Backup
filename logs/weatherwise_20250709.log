@@ -1,0 +1,689 @@
+2025-07-09 01:46:09,020 - root - INFO - Default configuration created at C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 01:46:09,034 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 01:46:09,034 - root - INFO - No previous state found, starting fresh
+2025-07-09 01:46:09,034 - root - INFO - 
+==================================================
+Mode: IDLE
+2025-07-09 01:46:09,143 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:46:09,143 - root - INFO - --> Warnings are present. Switching to WARNINGS mode.
+2025-07-09 01:46:09,144 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:46:09,189 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:46:12,194 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:46:13,695 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:46:16,204 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:46:29,572 - root - INFO - SUCCESS: Search executed.
+2025-07-09 01:46:30,576 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:46:30,576 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 01:46:32,578 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 01:46:32,578 - root - INFO - ...Toggling radar playback.
+2025-07-09 01:46:34,883 - root - INFO - ...Cursor parked.
+2025-07-09 01:46:35,117 - root - ERROR - ERROR: Failed to get WeatherAPI data for Grand Prairie, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Grand+Prairie%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 01:46:35,118 - root - INFO - Showing current conditions for Grand Prairie, TX during warning
+2025-07-09 01:46:45,119 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:46:45,406 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:47:56,189 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 01:47:56,201 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 01:47:56,207 - root - INFO - Previous state loaded
+2025-07-09 01:47:56,207 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:47:56,404 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:47:56,405 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:47:56,444 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:47:59,458 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:48:00,959 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:48:03,463 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:48:16,830 - root - INFO - SUCCESS: Search executed.
+2025-07-09 01:48:17,833 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:48:17,833 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 01:48:19,835 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 01:48:19,835 - root - INFO - ...Toggling radar playback.
+2025-07-09 01:48:22,140 - root - INFO - ...Cursor parked.
+2025-07-09 01:48:22,367 - root - ERROR - ERROR: Failed to get WeatherAPI data for Dallas, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Dallas%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 01:48:22,367 - root - INFO - Showing current conditions for Dallas, TX during warning
+2025-07-09 01:48:32,369 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:48:32,852 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:53:40,098 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 01:53:40,112 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 01:53:40,119 - root - INFO - Previous state loaded
+2025-07-09 01:53:40,120 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:53:40,681 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:53:40,681 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:53:40,723 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:53:43,741 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:53:45,243 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:53:47,748 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:54:01,114 - root - INFO - SUCCESS: Search executed.
+2025-07-09 01:54:02,121 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:54:02,121 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 01:54:04,123 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 01:54:04,123 - root - INFO - ...Toggling radar playback.
+2025-07-09 01:54:06,428 - root - INFO - ...Cursor parked.
+2025-07-09 01:54:06,712 - root - ERROR - ERROR: Failed to get WeatherAPI data for El Paso, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=El+Paso%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 01:54:06,713 - root - INFO - Showing current conditions for El Paso, TX during warning
+2025-07-09 01:54:16,714 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:54:16,918 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:54:26,919 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:54:27,046 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:54:37,047 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:54:37,149 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:54:37,149 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:54:37,150 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:54:40,162 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:54:41,663 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:54:44,168 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:57:59,117 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 01:57:59,129 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 01:57:59,136 - root - INFO - Previous state loaded
+2025-07-09 01:57:59,136 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:57:59,437 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:57:59,438 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:58:14,630 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:58:17,638 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:58:19,139 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:58:21,644 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:58:35,011 - root - INFO - SUCCESS: Search executed.
+2025-07-09 01:58:38,018 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:58:38,018 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 01:58:40,020 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 01:58:40,020 - root - INFO - ...Toggling radar playback.
+2025-07-09 01:58:42,325 - root - INFO - ...Cursor parked.
+2025-07-09 01:58:42,549 - root - ERROR - ERROR: Failed to get WeatherAPI data for Fort Worth, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Fort+Worth%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 01:58:42,550 - root - INFO - Showing current conditions for Fort Worth, TX during warning
+2025-07-09 01:58:52,551 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:58:52,881 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:59:02,882 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:59:03,182 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:59:13,183 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 01:59:13,479 - root - INFO - Weather Activity Score: 7.5 (based on 1 warnings)
+2025-07-09 01:59:13,479 - root - INFO - Showing warning 1/1: Severe Thunderstorm Warning
+2025-07-09 01:59:28,279 - root - INFO - ALERT: Processing warning for 'Fisher County, TX'
+2025-07-09 01:59:31,287 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:59:32,788 - root - INFO - 
+>>> ACTION: Navigating to 'Fisher County, TX'
+2025-07-09 01:59:35,292 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:59:48,661 - root - INFO - SUCCESS: Search executed.
+2025-07-09 01:59:49,669 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 01:59:49,669 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 01:59:51,670 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 01:59:51,671 - root - INFO - ...Toggling radar playback.
+2025-07-09 01:59:53,977 - root - INFO - ...Cursor parked.
+2025-07-09 01:59:54,200 - root - ERROR - ERROR: Failed to get WeatherAPI data for Lubbock, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Lubbock%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 01:59:54,201 - root - INFO - Showing current conditions for Lubbock, TX during warning
+2025-07-09 02:00:04,202 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 02:00:04,558 - root - INFO - Weather Activity Score: 0 (based on 0 warnings)
+2025-07-09 02:00:04,558 - root - INFO - --> No warnings are present. Switching to CITIES mode.
+2025-07-09 02:00:04,558 - root - INFO - Cycling display to: forecast
+2025-07-09 02:00:05,467 - root - ERROR - ERROR: Failed to get WeatherAPI data for Lubbock, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Lubbock%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 02:00:05,467 - root - INFO - Showing forecast display for Lubbock, TX
+2025-07-09 02:00:05,469 - root - INFO - Navigating to city: Bowling Green, KY
+2025-07-09 02:00:06,675 - root - ERROR - ERROR: Failed to get WeatherAPI data for Bowling Green, KY: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Bowling+Green%2C+KY&aqi=yes&alerts=yes&days=3
+2025-07-09 02:00:07,678 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 02:00:09,179 - root - INFO - 
+>>> ACTION: Navigating to 'Bowling Green, KY'
+2025-07-09 02:00:11,684 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 02:00:25,051 - root - INFO - SUCCESS: Search executed.
+2025-07-09 02:00:26,053 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 02:00:26,053 - root - INFO - ...Zooming out 4 step(s)
+2025-07-09 02:00:30,056 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 02:00:30,057 - root - INFO - ...Toggling radar playback.
+2025-07-09 02:00:32,362 - root - INFO - ...Cursor parked.
+2025-07-09 02:00:32,362 - root - INFO - Showing current display for Bowling Green, KY
+2025-07-09 02:00:32,365 - root - INFO - City 1 shown
+2025-07-09 02:00:42,366 - root - INFO - 
+==================================================
+Mode: CITIES
+2025-07-09 02:00:42,708 - root - INFO - Weather Activity Score: 0 (based on 0 warnings)
+2025-07-09 02:00:52,709 - root - INFO - 
+==================================================
+Mode: CITIES
+2025-07-09 02:00:52,845 - root - INFO - Weather Activity Score: 0 (based on 0 warnings)
+2025-07-09 02:00:52,845 - root - INFO - Cycling display to: forecast
+2025-07-09 02:00:53,164 - root - ERROR - ERROR: Failed to get WeatherAPI data for Lubbock, TX: 401 Client Error: Unauthorized for url: https://api.weatherapi.com/v1/forecast.json?key=680c20ca57764c4fbaa230119252606&q=Lubbock%2C+TX&aqi=yes&alerts=yes&days=3
+2025-07-09 02:00:53,164 - root - INFO - Showing forecast display for Lubbock, TX
+2025-07-09 17:28:42,512 - root - INFO - Default configuration created at C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 17:28:42,526 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 17:28:42,526 - root - INFO - Previous state loaded
+2025-07-09 17:28:42,526 - root - INFO - 
+==================================================
+Mode: CITIES
+2025-07-09 17:28:42,965 - root - INFO - Weather Activity Score: 135.0 (based on 18 warnings)
+2025-07-09 17:28:42,965 - root - INFO - --> Warnings are present. Switching to WARNINGS mode.
+2025-07-09 17:28:42,965 - root - INFO - Showing warning 1/18: Severe Thunderstorm Warning
+2025-07-09 17:28:53,922 - root - INFO - ALERT: Processing warning for 'Bennett County, SD'
+2025-07-09 17:28:56,930 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 17:28:58,432 - root - INFO - 
+>>> ACTION: Navigating to 'Bennett County, SD'
+2025-07-09 17:29:00,939 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 17:29:14,357 - root - INFO - SUCCESS: Search executed.
+2025-07-09 17:29:15,360 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 17:29:15,360 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 17:29:17,362 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 17:29:17,363 - root - INFO - ...Toggling radar playback.
+2025-07-09 17:29:19,667 - root - INFO - ...Cursor parked.
+2025-07-09 17:29:20,127 - root - INFO - Showing current conditions for Vermillion, SD during warning
+2025-07-09 17:29:30,128 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 17:29:30,857 - root - INFO - Weather Activity Score: 135.0 (based on 18 warnings)
+2025-07-09 17:29:40,859 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 17:29:41,241 - root - INFO - Weather Activity Score: 135.0 (based on 18 warnings)
+2025-07-09 21:29:56,072 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 21:29:56,087 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 21:29:56,087 - root - INFO - Previous state loaded
+2025-07-09 21:29:56,088 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:29:56,545 - root - INFO - Weather Activity Score: 90.0 (based on 12 warnings)
+2025-07-09 21:29:56,545 - root - INFO - Showing warning 2/12: Severe Thunderstorm Warning
+2025-07-09 21:30:10,306 - root - INFO - ALERT: Processing warning for 'Kidder County, ND'
+2025-07-09 21:30:11,315 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:30:12,816 - root - INFO - 
+>>> ACTION: Navigating to 'Kidder County, ND'
+2025-07-09 21:30:15,319 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:30:28,688 - root - INFO - SUCCESS: Search executed.
+2025-07-09 21:30:29,696 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:30:29,697 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 21:30:31,699 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 21:30:31,699 - root - INFO - ...Toggling radar playback.
+2025-07-09 21:30:34,004 - root - INFO - ...Cursor parked.
+2025-07-09 21:30:34,496 - root - INFO - Showing current conditions for Bismarck, ND during warning
+2025-07-09 21:30:44,498 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:30:45,027 - root - INFO - Weather Activity Score: 52.5 (based on 7 warnings)
+2025-07-09 21:30:55,028 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:30:56,322 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 21:31:06,323 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:31:06,758 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 21:31:06,758 - root - INFO - Showing warning 3/9: Severe Thunderstorm Warning
+2025-07-09 21:31:19,374 - root - INFO - ALERT: Processing warning for 'Brown County, SD'
+2025-07-09 21:31:22,380 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:31:23,881 - root - INFO - 
+>>> ACTION: Navigating to 'Brown County, SD'
+2025-07-09 21:31:26,388 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:31:39,709 - root - INFO - SUCCESS: Search executed.
+2025-07-09 21:31:42,719 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:31:42,719 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 21:31:44,722 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 21:31:44,722 - root - INFO - ...Toggling radar playback.
+2025-07-09 21:31:47,026 - root - INFO - ...Cursor parked.
+2025-07-09 21:31:47,569 - root - INFO - Showing current conditions for Watertown, SD during warning
+2025-07-09 21:31:57,570 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:31:57,936 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 21:32:07,937 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:32:08,339 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 21:32:18,340 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:32:18,703 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 21:32:18,703 - root - INFO - Showing warning 4/9: Severe Thunderstorm Warning
+2025-07-09 21:32:29,510 - root - INFO - ALERT: Processing warning for 'Benson County, ND'
+2025-07-09 21:32:32,520 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:32:34,021 - root - INFO - 
+>>> ACTION: Navigating to 'Benson County, ND'
+2025-07-09 21:32:36,529 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:32:49,898 - root - INFO - SUCCESS: Search executed.
+2025-07-09 21:32:50,901 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:32:50,901 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 21:32:52,903 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 21:32:52,903 - root - INFO - ...Toggling radar playback.
+2025-07-09 21:32:55,208 - root - INFO - ...Cursor parked.
+2025-07-09 21:32:55,697 - root - INFO - Showing current conditions for Fargo, ND during warning
+2025-07-09 21:33:05,699 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:33:07,131 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 21:33:17,133 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:33:17,543 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 21:33:27,544 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:33:27,941 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 21:33:27,941 - root - INFO - Showing warning 5/10: Severe Thunderstorm Warning
+2025-07-09 21:33:39,347 - root - INFO - ALERT: Processing warning for 'Brown County, SD'
+2025-07-09 21:33:42,354 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:33:43,855 - root - INFO - 
+>>> ACTION: Navigating to 'Brown County, SD'
+2025-07-09 21:33:46,363 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:33:59,681 - root - INFO - SUCCESS: Search executed.
+2025-07-09 21:34:00,686 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 21:34:00,686 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 21:34:02,689 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 21:34:02,689 - root - INFO - ...Toggling radar playback.
+2025-07-09 21:34:04,993 - root - INFO - ...Cursor parked.
+2025-07-09 21:34:06,274 - root - ERROR - ERROR: Failed to get WeatherAPI data for Sturgis, SD: 503 Server Error: Service Unavailable for url: https://api.weatherapi.com/v1/astronomy.json?key=09846f8f8afa4a2bb19194147250907&q=Sturgis%2C+SD&aqi=yes&alerts=yes&days=3
+2025-07-09 21:34:06,276 - root - INFO - Showing current conditions for Sturgis, SD during warning
+2025-07-09 21:34:16,278 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:34:16,652 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 21:34:26,653 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 21:34:27,030 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 22:24:46,232 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 22:24:46,246 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 22:24:46,257 - root - INFO - Previous state loaded
+2025-07-09 22:24:46,257 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:24:46,896 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:24:46,896 - root - INFO - Showing warning 6/9: Severe Thunderstorm Warning
+2025-07-09 22:24:58,280 - root - INFO - ALERT: Processing warning for 'Charles Mix County, SD'
+2025-07-09 22:24:59,285 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:25:00,786 - root - INFO - 
+>>> ACTION: Navigating to 'Charles Mix County, SD'
+2025-07-09 22:25:03,292 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:25:16,916 - root - INFO - SUCCESS: Search executed.
+2025-07-09 22:25:17,920 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:25:17,920 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 22:25:19,923 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 22:25:19,923 - root - INFO - ...Toggling radar playback.
+2025-07-09 22:25:22,227 - root - INFO - ...Cursor parked.
+2025-07-09 22:25:22,710 - root - INFO - Showing current conditions for Mitchell, SD during warning
+2025-07-09 22:25:32,712 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:25:33,409 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:25:43,411 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:25:43,744 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:25:53,746 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:25:54,112 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:25:54,113 - root - INFO - Showing warning 7/9: Severe Thunderstorm Warning
+2025-07-09 22:26:04,830 - root - INFO - ALERT: Processing warning for 'Wells County, ND'
+2025-07-09 22:26:05,834 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:26:07,336 - root - INFO - 
+>>> ACTION: Navigating to 'Wells County, ND'
+2025-07-09 22:26:09,840 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:26:23,160 - root - INFO - SUCCESS: Search executed.
+2025-07-09 22:26:24,167 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 22:26:24,167 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 22:26:26,170 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 22:26:26,170 - root - INFO - ...Toggling radar playback.
+2025-07-09 22:26:28,474 - root - INFO - ...Cursor parked.
+2025-07-09 22:26:28,938 - root - INFO - Showing current conditions for Devils Lake, ND during warning
+2025-07-09 22:26:38,939 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:26:39,370 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:26:49,371 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:26:49,708 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:26:59,709 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 22:27:00,072 - root - INFO - Weather Activity Score: 80.0 (based on 9 warnings)
+2025-07-09 22:27:00,072 - root - INFO - Showing warning 8/9: Severe Thunderstorm Warning
+2025-07-09 23:16:16,523 - root - INFO - Configuration loaded from C:\Users\wxstu\Desktop\wx bot\config.json
+2025-07-09 23:16:16,537 - root - INFO - PyAutoGUI failsafe disabled
+2025-07-09 23:16:16,547 - root - INFO - Previous state loaded
+2025-07-09 23:16:16,548 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:16:17,194 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:16:17,195 - root - INFO - Showing warning 8/9: Severe Thunderstorm Warning
+2025-07-09 23:16:27,077 - root - INFO - ALERT: Processing warning for 'Custer County, NE'
+2025-07-09 23:16:30,083 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:16:31,584 - root - INFO - 
+>>> ACTION: Navigating to 'Custer County, NE'
+2025-07-09 23:16:36,095 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:16:49,466 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:16:50,473 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:16:50,473 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:16:52,475 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:16:52,475 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:16:54,780 - root - INFO - ...Cursor parked.
+2025-07-09 23:16:55,304 - root - INFO - Showing current conditions for Beatrice, NE during warning
+2025-07-09 23:17:05,305 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:17:05,925 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:17:15,926 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:17:16,314 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:17:26,315 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:17:26,639 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:17:26,639 - root - INFO - Showing warning 9/9: Severe Thunderstorm Warning
+2025-07-09 23:17:37,720 - root - INFO - ALERT: Processing warning for 'Griggs County, ND'
+2025-07-09 23:17:38,727 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:17:40,228 - root - INFO - 
+>>> ACTION: Navigating to 'Griggs County, ND'
+2025-07-09 23:17:42,736 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:17:56,105 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:17:57,108 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:17:57,108 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:17:59,111 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:17:59,111 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:18:01,416 - root - INFO - ...Cursor parked.
+2025-07-09 23:18:01,975 - root - INFO - Showing current conditions for Devils Lake, ND during warning
+2025-07-09 23:18:11,976 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:18:12,373 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:18:22,374 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:18:22,723 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:18:32,724 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:18:33,090 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:18:33,090 - root - INFO - Showing warning 1/9: Severe Thunderstorm Warning
+2025-07-09 23:18:54,139 - root - INFO - ALERT: Processing warning for 'Beadle County, SD'
+2025-07-09 23:18:55,150 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:18:56,651 - root - INFO - 
+>>> ACTION: Navigating to 'Beadle County, SD'
+2025-07-09 23:18:59,155 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:19:12,523 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:19:13,529 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:19:13,530 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:19:15,532 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:19:15,532 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:19:17,836 - root - INFO - ...Cursor parked.
+2025-07-09 23:19:18,335 - root - INFO - Showing current conditions for Brookings, SD during warning
+2025-07-09 23:19:28,336 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:19:28,705 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:19:38,706 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:19:39,041 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:19:49,043 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:19:49,402 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:19:49,402 - root - INFO - Showing warning 2/9: Severe Thunderstorm Warning
+2025-07-09 23:20:02,437 - root - INFO - ALERT: Processing warning for 'Antelope County, NE'
+2025-07-09 23:20:03,445 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:20:04,947 - root - INFO - 
+>>> ACTION: Navigating to 'Antelope County, NE'
+2025-07-09 23:20:07,451 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:20:20,922 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:20:21,925 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:20:21,925 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:20:23,927 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:20:23,927 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:20:26,230 - root - INFO - ...Cursor parked.
+2025-07-09 23:20:26,792 - root - INFO - Showing current conditions for Hastings, NE during warning
+2025-07-09 23:20:36,793 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:20:37,508 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:20:47,509 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:20:47,867 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:20:57,869 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:20:58,229 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:20:58,230 - root - INFO - Showing warning 3/9: Severe Thunderstorm Warning
+2025-07-09 23:21:12,471 - root - INFO - ALERT: Processing warning for 'Bon Homme County, SD'
+2025-07-09 23:21:13,479 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:21:14,981 - root - INFO - 
+>>> ACTION: Navigating to 'Bon Homme County, SD'
+2025-07-09 23:21:17,486 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:21:31,013 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:21:32,018 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:21:32,018 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:21:34,020 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:21:34,020 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:21:36,326 - root - INFO - ...Cursor parked.
+2025-07-09 23:21:36,834 - root - INFO - Showing current conditions for Brandon, SD during warning
+2025-07-09 23:21:46,836 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:21:47,441 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:21:57,443 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:21:57,794 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:22:07,796 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:22:08,167 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:22:08,167 - root - INFO - Showing warning 4/9: Severe Thunderstorm Warning
+2025-07-09 23:22:17,589 - root - INFO - ALERT: Processing warning for 'Custer County, NE'
+2025-07-09 23:22:18,598 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:22:20,100 - root - INFO - 
+>>> ACTION: Navigating to 'Custer County, NE'
+2025-07-09 23:22:22,606 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:22:35,975 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:22:36,979 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:22:36,979 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:22:38,982 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:22:38,982 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:22:41,286 - root - INFO - ...Cursor parked.
+2025-07-09 23:22:41,792 - root - INFO - Showing current conditions for Lincoln, NE during warning
+2025-07-09 23:22:51,794 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:22:52,447 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:23:02,448 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:23:02,775 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:23:12,776 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:23:13,131 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:23:13,131 - root - INFO - Showing warning 5/9: Severe Thunderstorm Warning
+2025-07-09 23:23:24,196 - root - INFO - ALERT: Processing warning for 'Griggs County, ND'
+2025-07-09 23:23:25,202 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:23:26,704 - root - INFO - 
+>>> ACTION: Navigating to 'Griggs County, ND'
+2025-07-09 23:23:29,214 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:23:42,581 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:23:43,585 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:23:43,585 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:23:45,587 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:23:45,588 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:23:47,891 - root - INFO - ...Cursor parked.
+2025-07-09 23:23:48,346 - root - INFO - Showing current conditions for Wahpeton, ND during warning
+2025-07-09 23:23:58,347 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:23:58,718 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:24:08,719 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:24:09,091 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:24:19,092 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:24:19,436 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:24:19,437 - root - INFO - Showing warning 6/9: Severe Thunderstorm Warning
+2025-07-09 23:24:28,916 - root - INFO - ALERT: Processing warning for 'Custer County, NE'
+2025-07-09 23:24:29,923 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:24:31,425 - root - INFO - 
+>>> ACTION: Navigating to 'Custer County, NE'
+2025-07-09 23:24:33,931 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:24:47,299 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:24:48,304 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:24:48,304 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:24:50,306 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:24:50,306 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:24:52,612 - root - INFO - ...Cursor parked.
+2025-07-09 23:24:52,612 - root - INFO - Showing current conditions for Lincoln, NE during warning
+2025-07-09 23:25:02,613 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:25:03,020 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:25:13,021 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:25:13,408 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:25:23,410 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:25:23,829 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:25:23,829 - root - INFO - Showing warning 7/9: Severe Thunderstorm Warning
+2025-07-09 23:25:36,050 - root - INFO - ALERT: Processing warning for 'Griggs County, ND'
+2025-07-09 23:25:37,057 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:25:38,558 - root - INFO - 
+>>> ACTION: Navigating to 'Griggs County, ND'
+2025-07-09 23:25:41,065 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:25:54,432 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:25:55,436 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:25:55,436 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:25:57,438 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:25:57,439 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:25:59,743 - root - INFO - ...Cursor parked.
+2025-07-09 23:25:59,744 - root - INFO - Showing current conditions for Devils Lake, ND during warning
+2025-07-09 23:26:09,745 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:26:10,336 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:26:20,338 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:26:20,699 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:26:30,701 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:26:31,065 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:26:31,065 - root - INFO - Showing warning 8/9: Severe Thunderstorm Warning
+2025-07-09 23:26:44,370 - root - INFO - ALERT: Processing warning for 'Antelope County, NE'
+2025-07-09 23:26:45,377 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:26:46,879 - root - INFO - 
+>>> ACTION: Navigating to 'Antelope County, NE'
+2025-07-09 23:26:49,387 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:27:02,856 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:27:03,862 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:27:03,862 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:27:05,864 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:27:05,864 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:27:08,169 - root - INFO - ...Cursor parked.
+2025-07-09 23:27:08,170 - root - INFO - Showing current conditions for Lincoln, NE during warning
+2025-07-09 23:27:18,171 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:27:18,814 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:27:28,815 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:27:29,145 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:27:39,147 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:27:39,517 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:27:39,517 - root - INFO - Showing warning 9/9: Severe Thunderstorm Warning
+2025-07-09 23:27:50,186 - root - INFO - ALERT: Processing warning for 'Griggs County, ND'
+2025-07-09 23:27:51,195 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:27:52,696 - root - INFO - 
+>>> ACTION: Navigating to 'Griggs County, ND'
+2025-07-09 23:27:55,200 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:28:08,569 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:28:09,575 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:28:09,575 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:28:11,577 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:28:11,577 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:28:13,882 - root - INFO - ...Cursor parked.
+2025-07-09 23:28:14,488 - root - INFO - Showing current conditions for West Fargo, ND during warning
+2025-07-09 23:28:24,490 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:28:25,127 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:28:35,128 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:28:35,483 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:28:45,485 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:28:45,950 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:28:45,950 - root - INFO - Showing warning 1/9: Severe Thunderstorm Warning
+2025-07-09 23:29:06,698 - root - INFO - ALERT: Processing warning for 'Beadle County, SD'
+2025-07-09 23:29:07,705 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:29:09,206 - root - INFO - 
+>>> ACTION: Navigating to 'Beadle County, SD'
+2025-07-09 23:29:11,716 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:29:25,084 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:29:26,088 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:29:26,088 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:29:28,090 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:29:28,090 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:29:30,395 - root - INFO - ...Cursor parked.
+2025-07-09 23:29:30,396 - root - INFO - Showing current conditions for Brookings, SD during warning
+2025-07-09 23:29:40,397 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:29:40,798 - root - INFO - Weather Activity Score: 75.0 (based on 10 warnings)
+2025-07-09 23:29:50,800 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:29:51,470 - root - INFO - Weather Activity Score: 67.5 (based on 9 warnings)
+2025-07-09 23:30:01,472 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:30:01,961 - root - INFO - Weather Activity Score: 60.0 (based on 8 warnings)
+2025-07-09 23:30:01,961 - root - INFO - Showing warning 4/8: Severe Thunderstorm Warning
+2025-07-09 23:30:11,906 - root - INFO - ALERT: Processing warning for 'Custer County, NE'
+2025-07-09 23:30:12,911 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:30:14,412 - root - INFO - 
+>>> ACTION: Navigating to 'Custer County, NE'
+2025-07-09 23:30:16,920 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:30:30,288 - root - INFO - SUCCESS: Search executed.
+2025-07-09 23:30:31,291 - root - INFO - SUCCESS: Window focused by clicking offset point.
+2025-07-09 23:30:31,292 - root - INFO - ...Zooming out 2 step(s)
+2025-07-09 23:30:33,294 - root - INFO - SUCCESS: Zoom applied.
+2025-07-09 23:30:33,294 - root - INFO - ...Toggling radar playback.
+2025-07-09 23:30:35,599 - root - INFO - ...Cursor parked.
+2025-07-09 23:30:36,105 - root - INFO - Showing current conditions for Kearney, NE during warning
+2025-07-09 23:30:46,108 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:30:46,498 - root - INFO - Weather Activity Score: 45.0 (based on 6 warnings)
+2025-07-09 23:30:56,499 - root - INFO - 
+==================================================
+Mode: WARNINGS
+2025-07-09 23:30:56,926 - root - INFO - Weather Activity Score: 45.0 (based on 6 warnings)

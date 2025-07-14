@@ -1,0 +1,5 @@
+cd "%USERPROFILE%\Desktop\wx bot"
+
+python weather_warning_monitoring.py
+
+python3 weather_warning_monitoring.py

@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Weather Conditions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .conditions-box {
+            width: 360px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 2px solid #00ccff;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #00ccff;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background: #00ccff;
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .location {
+            font-size: 22px;
+            text-align: center;
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .temp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            font-size: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .temperature {
+            font-size: 44px;
+            color: #ffcc00;
+        }
+
+        .feels-like {
+            font-size: 18px;
+            text-align: right;
+            color: #ffffff;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .data-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .data-label {
+            color: #00ccff;
+            font-weight: bold;
+        }
+
+        .data-value {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .attribution {
+            text-align: center;
+            font-size: 14px;
+            padding: 6px;
+            background: rgba(255,255,255,0.05);
+            color: #ccc;
+        }
+
+        .pulse-strip {
+            height: 6px;
+            background: linear-gradient(90deg, #ff0000, #ff9900, #00cc00);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="pulse-strip"></div>
+    <div class="conditions-box" id="conditions-box">
+        <div class="header">CURRENT CONDITIONS</div>
+        <div id="location" class="location">Loading...</div>
+
+        <div class="temp-row">
+            <div id="temperature" class="temperature">--°F</div>
+            <div id="feels-like" class="feels-like">FEELS LIKE: --°F</div>
+        </div>
+
+        <div class="content-grid">
+            <div class="data-item">
+                <div class="data-label">☁️ Condition</div>
+                <div id="condition" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">💨 Wind</div>
+                <div id="wind" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">🌬️ Gusts</div>
+                <div id="wind-gust" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">💧 Humidity</div>
+                <div id="humidity" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">🌡️ Dewpoint</div>
+                <div id="dewpoint" class="data-value">--°F</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">📈 Pressure</div>
+                <div id="pressure" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">👁️ Visibility</div>
+                <div id="visibility" class="data-value">--</div>
+            </div>
+            <div class="data-item">
+                <div class="data-label">🔆 UV Index</div>
+                <div id="uv-index" class="data-value">--</div>
+            </div>
+        </div>
+
+        <div class="attribution" id="attribution">Powered by WeatherAPI.com</div>
+    </div>
+
+    <script>
+        const getElem = id => document.getElementById(id);
+
+        async function updateData() {
+            try {
+                const response = await fetch('current_conditions.json?' + new Date().getTime());
+                const data = await response.json();
+                const box = getElem('conditions-box');
+
+                if (data && data.visible) {
+                    getElem('location').textContent = data.location || 'Unknown';
+                    getElem('temperature').textContent = `${data.temperature}°F` || '--°F';
+                    getElem('feels-like').textContent = `FEELS LIKE: ${data.feelsLike}°F` || '--°F';
+                    getElem('condition').textContent = data.description || '--';
+                    getElem('wind').textContent = data.wind || '--';
+                    getElem('wind-gust').textContent = data.windGust || '--';
+                    getElem('humidity').textContent = data.humidity || '--';
+                    getElem('dewpoint').textContent = `${data.dewpoint}°F` || '--°F';
+                    getElem('pressure').textContent = data.pressure || '--';
+                    getElem('visibility').textContent = data.visibility || '--';
+                    getElem('uv-index').textContent = data.uvIndex || '--';
+                    getElem('attribution').textContent = `Powered by ${data.dataSource || 'WeatherAPI.com'}`;
+                }
+            } catch (err) {
+                console.error("Failed to update data:", err);
+            }
+        }
+
+        updateData();
+        setInterval(updateData, 10000);
+    </script>
+</body>
+</html>

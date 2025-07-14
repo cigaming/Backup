@@ -1,0 +1,48 @@
+{
+    "WEATHER_WISE_WINDOW_TITLE": "WeatherWise",
+    "HOTKEY_SHOW_GRAPHIC": [
+        "ctrl",
+        "alt",
+        "shift",
+        "f11"
+    ],
+    "HOTKEY_HIDE_GRAPHIC": [
+        "ctrl",
+        "alt",
+        "shift",
+        "f12"
+    ],
+    "HOTKEY_COMPOSITE_RADAR": [
+        "shift",
+        "2"
+    ],
+    "HOTKEY_NORMAL_RADAR": [
+        "shift",
+        "1"
+    ],
+    "HOTKEY_PLAYBACK_TOGGLE": "space",
+    "POLLING_INTERVAL_SECONDS": 10,
+    "IDLE_CYCLE_SECONDS": 100,
+    "WARNING_INTERLEAVE_CYCLE_SECONDS": 30,
+    "POST_SEARCH_DELAY_SECONDS": 2,
+    "POST_NAVIGATION_ZOOM_OUTS": 2,
+    "IDLE_CITY_TOUR_ZOOM_OUTS": 4,
+    "IDLE_RADAR_TOUR_ZOOM_OUTS": 2,
+    "LOCAL_TIMEZONE": "America/Chicago",
+    "NWS_USER_AGENT": "WeatherWiseStreamBot/1.0 (YourName, yourcontact@example.com)",
+    "GEOLOCATION_USER_AGENT": "WeatherWiseStreamBot/1.0 (YourStreamName, yourcontact@example.com)",
+    "WEATHER_API_KEY": "09846f8f8afa4a2bb19194147250907",
+    "WEATHER_API_ENABLED": true,
+    "CITY_DISPLAY_DURATION": 100,
+    "WARNINGS_PER_CYCLE": 10,
+    "CITIES_PER_CYCLE": 5,
+    "DISPLAY_SEQUENCE": [
+        "current",
+        "forecast",
+        "three_day",
+        "astronomy",
+        "air_quality"
+    ],
+    "DISPLAY_DURATION": 15,
+    "CACHE_DURATION": 900
+}

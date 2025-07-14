@@ -1,0 +1,12 @@
+{
+    "visible": true,
+    "type": "GALE WARNING",
+    "area": "Coastal waters from Cape Blanco OR to Pt. St. George CA out 10 nm; Waters from Cape Blanco OR to Pt. St. George CA from 10 to 60 nm",
+    "population": "N/A",
+    "severity": "Moderate",
+    "certainty": "Likely",
+    "wind": "N/A",
+    "hail": null,
+    "expires": "2025-07-10T15:15:00-07:00",
+    "isPDS": false
+}

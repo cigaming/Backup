@@ -1,0 +1,31 @@
+{
+    "active_warnings": [
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2b787e6661cf4b3fb366b946a443cd9fca823dc4.002.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b3020531e0b8159ffeb9b2b62a0a9a0fcdb695d7.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0502821c8f452832990c55024fff4be92c26a24b.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.81be8ff04de23de13778dd753261bb0925b6eb5c.002.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d3ca51c01930abbf8c9ffd11689258f06e5b2dc9.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f35aa562553dcece37bc7c82aee61256d8641da6.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.5974b5eb7ccaeda1d9492bca17ad16a30972e773.002.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.d6dedf46a69b3f1e9c7038d60c8fb0b5de68c18e.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f34010d26d7bacaca9ad227be3e5daf54fb2743b.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.215a74b6d8b0b92deace0b81fa330def6b2f8e47.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.288c5f735348a1633b33ac784f414a543f0baa3c.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.02fdb03cc119f7d80207d2b460193019d3d18f26.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.59d68bcb5ccfefda8afe37a810753aed13f5d980.002.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.34a2ac684447947911e73adac078d8211e31b60f.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.89525e1504b51b4850568a395633323731bf618d.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.2bfb7993e17ed685ecc48ceefcabd57498a5f21c.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.77051504f7adc2fa15a5139441055e86cecfa523.001.1",
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.f8b29d14c67d91b5a2df6fd3cab01b9b9847bdaf.001.1"
+    ],
+    "warning_display_index": 1,
+    "cities_shown_in_break": 0,
+    "last_action_timestamp": 1752100160.1278234,
+    "current_mode": "warnings",
+    "warnings_shown_in_cycle": 1,
+    "current_display": "forecast",
+    "display_start_time": 1752044452.8453844,
+    "current_city": "Vermillion, SD",
+    "city_start_time": 1752044432.3628807
+}

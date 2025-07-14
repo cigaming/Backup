@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Warning Info Box</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Teko', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .infobox {
+            width: 350px;
+            border: 3px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.95); 
+            display: none; 
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .infobox.visible {
+            opacity: 1;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: 600;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        .pds-indicator {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 2px 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            text-align: center;
+            display: none;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            padding: 10px;
+            font-size: 22px;
+            gap: 5px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+            padding: 2px 5px;
+        }
+        
+        .data-item:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #dddddd; 
+        }
+
+        .data-value {
+            font-weight: 800;
+            text-align: right;
+        }
+        
+        .attribution {
+            font-size: 14px;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Fixed loading spinner - hide by default and with !important */
+        .loading {
+            display: none !important;
+            visibility: hidden;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+            color: #dddddd;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 5px auto;
+            display: none !important;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* PDS warning animation */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        
+        .pds-warning {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 400px) {
+            .infobox {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .header {
+                font-size: 24px;
+            }
+            
+            .content-grid {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="infobox" class="infobox" role="region" aria-label="Weather Warning Information">
+    <div id="header" class="header" role="heading" aria-level="1"></div>
+    <div id="pds-indicator" class="pds-indicator">PARTICULARLY DANGEROUS SITUATION</div>
+    <div class="content-grid">
+        <div class="data-item">
+            <div class="data-label">Area:</div>
+            <div id="area" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Population:</div>
+            <div id="population" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Severity:</div>
+            <div id="severity" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Certainty:</div>
+            <div id="certainty" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Wind Threat:</div>
+            <div id="wind" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Hail Threat:</div>
+            <div id="hail" class="data-value">-</div>
+        </div>
+        <div class="data-item">
+            <div class="data-label">Expires:</div>
+            <div id="expires" class="data-value">-</div>
+        </div>
+    </div>
+    
+    <!-- Removed the loading div completely -->
+</div>
+
+<script>
+    const getElem = (id) => document.getElementById(id);
+    let dataRefreshTimer;
+
+    async function updateData() {
+        try {
+            const response = await fetch('warning_data.json?' + new Date().getTime());
+            const data = await response.json();
+            const box = getElem('infobox');
+            const pdsIndicator = getElem('pds-indicator');
+
+            if (data && data.visible) {
+                getElem('header').textContent = data.type || 'N/A';
+                getElem('area').textContent = data.area || 'N/A';
+                getElem('population').textContent = data.population || 'N/A';
+                getElem('severity').textContent = data.severity || 'N/A';
+                getElem('certainty').textContent = data.certainty || 'N/A';
+                getElem('wind').textContent = data.wind || 'N/A';
+                getElem('hail').textContent = data.hail || 'N/A';
+                getElem('expires').textContent = data.expires || 'N/A';
+
+                // Handle PDS status
+                if (data.isPDS) {
+                    pdsIndicator.style.display = 'block';
+                    box.classList.add('pds-warning');
+                    box.style.backgroundColor = 'rgba(150, 50, 150, 0.9)'; // Light purple for PDS
+                } else {
+                    pdsIndicator.style.display = 'none';
+                    box.classList.remove('pds-warning');
+                    
+                    // Set appropriate color based on warning type
+                    if (data.type === 'TORNADO WARNING') {
+                        box.style.backgroundColor = 'rgba(200, 0, 0, 0.9)';
+                    } else if (data.type === 'SEVERE T-STORM WARNING') {
+                        box.style.backgroundColor = 'rgba(255, 140, 0, 0.9)';
+                    } else {
+                        box.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                    }
+                }
+                
+                box.style.display = 'block';
+                setTimeout(() => box.classList.add('visible'), 10);
+            } else {
+                box.classList.remove('visible');
+                box.classList.remove('pds-warning');
+                setTimeout(() => box.style.display = 'none', 300);
+            }
+        } catch (error) {
+            console.error('Error fetching warning data:', error);
+            getElem('infobox').classList.remove('visible');
+            setTimeout(() => getElem('infobox').style.display = 'none', 300);
+        }
+    }
+
+    // Initial load
+    updateData();
+    
+    // Set up interval for updates
+    dataRefreshTimer = setInterval(updateData, 1000);
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+        clearInterval(dataRefreshTimer);
+    });
+</script>
+
+</body>
+</html>
+
+

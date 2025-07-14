@@ -1,0 +1,14 @@
+{
+    "active_warnings": [
+        "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.801f27ef86374057f80361f80b20cb8cc5367166.001.1"
+    ],
+    "warning_display_index": 0,
+    "cities_shown_in_break": 0,
+    "last_action_timestamp": 1752468243.657781,
+    "current_mode": "warnings",
+    "warnings_shown_in_cycle": 1,
+    "current_display": "current",
+    "display_start_time": 0,
+    "current_city": "Belgrade, MT",
+    "city_start_time": 0
+}

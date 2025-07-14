@@ -1,0 +1,89 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="300">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <style>
+            @keyframes flash-yellow {
+                0%, 100% { background-color: #f4a300; }
+                50% { background-color: #ffcc00; }
+            }
+            @keyframes flash-red {
+                0%, 100% { background-color: #b30000; }
+                50% { background-color: #ff0000; }
+            }
+            @keyframes flash-green {
+                0%, 100% { background-color: #1b5e20; }
+                50% { background-color: #66bb6a; }
+            }
+            @keyframes threat-yellow {
+                0%, 100% { background-color: #ffcc00; color: #000; }
+                50% { background-color: #ff9900; color: #000; }
+            }
+            @keyframes threat-red {
+                0%, 100% { background-color: #ff0000; color: #000; }
+                50% { background-color: #ffffff; color: #000; }
+            }
+            @keyframes threat-green {
+                0%, 100% { background-color: #66bb6a; color: #000; }
+                50% { background-color: #1b5e20; color: #000; }
+            }
+            body {
+                font-family: 'Anton', sans-serif;
+                background-color: transparent;
+                margin: 0;
+                padding: 0;
+                color: white;
+                text-shadow: 2px 2px 4px black;
+            }
+            .container {
+                width: 540px;
+                margin: 10px auto;
+                box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            }
+            .title {
+                background-color: #1c1c1c;
+                padding: 18px;
+                font-size: 34px;
+                text-transform: uppercase;
+                color: white;
+                text-shadow: 3px 3px 5px black;
+            }
+            .row {
+                padding: 10px 16px;
+                font-size: 22px;
+                background-color: #f4a300;
+                color: black;
+                border-bottom: 2px solid #000;
+                text-shadow: 2px 2px 3px white;
+            }
+            .flash-yellow { animation: flash-yellow 1.5s infinite; }
+            .flash-red { animation: flash-red 1.5s infinite; }
+            .flash-green { animation: flash-green 1.5s infinite; }
+            .threat-yellow { animation: threat-yellow 1.5s infinite; }
+            .threat-red { animation: threat-red 1.5s infinite; }
+            .threat-green { animation: threat-green 1.5s infinite; }
+            .highlight {
+                color: black;
+            }
+            .icon {
+                height: 22px;
+                vertical-align: middle;
+                margin-left: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">SEVERE T-STORM WARNING ⚡ <img src="icons/tstorm.png" class="icon" alt="icon"></div>
+            <div class="row flash-yellow">EXPIRES: 10:15 PM CDT</div>
+            <div class="row flash-yellow">AREAS: Brown, SD; Edmunds, SD</div>
+            <div class="row flash-yellow">SOURCE: PUBLIC</div>
+            <div class="row flash-yellow">MAX HAIL: N/A</div>
+            <div class="row flash-yellow">MAX WIND: 60 MPH</div>
+            <div class="row threat-yellow">DAMAGE THREAT: <span class="highlight">SEVERE</span></div>
+        </div>
+    </body>
+    </html>
+    

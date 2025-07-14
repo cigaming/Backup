@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Activity Score</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            background-color: transparent;
+        }
+        
+        .score-container {
+            width: 300px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.95));
+            border: 3px solid #ffffff;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        
+        .score-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+            letter-spacing: 1px;
+        }
+        
+        .score-value {
+            font-size: 50px;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.7);
+        }
+        
+        .score-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        
+        .alert-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        
+        .warning-counts {
+            display: flex;
+            flex-direction: column; /* Changed to column for vertical stacking */
+            align-items: center;
+            width: 90%;
+            margin-top: 10px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .warning-item {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center text */
+            font-size: 24px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px; /* Add space between items */
+            width: 100%; /* Take full width */
+        }
+        
+        .tornado-count {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+        
+        .pds-count {
+            background-color: rgba(150, 50, 150, 0.8);
+        }
+        
+        .tstorm-count {
+            background-color: rgba(255, 165, 0, 0.8);
+        }
+        
+        /* Updated pulse animations with wider frames */
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.9); }
+            70% { box-shadow: 0 0 0 25px rgba(255, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+        
+        @keyframes pulse-orange {
+            0% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.9); }
+            70% { box-shadow: 0 0 0 25px rgba(255, 166, 0, 0.5); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 166, 0, 0); }
+        }
+        
+        @keyframes pulse-purple {
+            0% { box-shadow: 0 0 0 0 rgba(150, 50, 150, 0.9); }
+            70% { box-shadow: 0 0 0 25px rgba(150, 50, 150, 0.5); }
+            100% { box-shadow: 0 0 0 0 rgba(150, 50, 150, 0); }
+        }
+        
+        @keyframes danger-flash {
+            0%, 100% { border-color: #ff0000; }
+            50% { border-color: #ffff00; }
+        }
+
+        .extreme-danger {
+            animation: danger-flash 1s infinite;
+            border-width: 4px;
+        }
+        
+        .pds-flash {
+            animation: pds-flash 1s infinite;
+        }
+        
+        @keyframes pds-flash {
+            0%, 100% { background-color: rgba(150, 50, 150, 0.8); }
+            50% { background-color: rgba(255, 50, 255, 0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div id="scoreBox" class="score-container">
+        <div class="score-title">Weather Activity</div>
+        <div id="scoreValue" class="score-value">0</div>
+        <div id="scoreSubtitle" class="score-subtitle">No Active Warnings</div>
+        <div id="alertCount" class="alert-count" style="display: none;">0</div>
+        
+        <div id="warningCounts" class="warning-counts" style="display: none;">
+            <div id="warningCounts" class="warning-counts">
+            <div id="pdsCount" class="warning-item pds-count">PDS TORNADO: 0</div>
+            <div id="tornadoCount" class="warning-item tornado-count">TORNADO: 0</div>
+            <div id="tstormCount" class="warning-item tstorm-count">SEVERE T-STORM:
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="tornadoAudio" src="tornado_warning.mp3" preload="auto"></audio>
+    <audio id="pdsAudio" src="PDS_warning.mp3" preload="auto"></audio>
+
+    <script>
+        // Store previous counts for comparison
+        let previousData = {
+            tornadoCount: 0,
+            pdsCount: 0,
+            score: 0
+        };
+        
+        // Audio cooldown management
+        let lastTornadoAudioTime = 0;
+        let lastPdsAudioTime = 0;
+        const AUDIO_COOLDOWN = 60000; // 60 seconds cooldown between same alert sounds
+        
+        // Function to play audio with cooldown
+        function playAudioWithCooldown(audioElement, lastPlayTimeVar) {
+            const currentTime = Date.now();
+            if (currentTime - window[lastPlayTimeVar] > AUDIO_COOLDOWN) {
+                audioElement.currentTime = 0; // Reset to start
+                audioElement.play();
+                window[lastPlayTimeVar] = currentTime;
+                return true;
+            }
+            return false;
+        }
+        
+        // Function to update the score box
+        async function updateScoreBox() {
+            try {
+                const response = await fetch('weather_score.json?' + new Date().getTime());
+                const data = await response.json();
+                
+                const scoreBox = document.getElementById('scoreBox');
+                const scoreValue = document.getElementById('scoreValue');
+                const scoreSubtitle = document.getElementById('scoreSubtitle');
+                const alertCount = document.getElementById('alertCount');
+                const warningCounts = document.getElementById('warningCounts');
+                const tornadoCount = document.getElementById('tornadoCount');
+                const pdsCount = document.getElementById('pdsCount');
+                const tstormCount = document.getElementById('tstormCount');
+                const tornadoAudio = document.getElementById('tornadoAudio');
+                const pdsAudio = document.getElementById('pdsAudio');
+                
+                // Calculate total alerts
+                const totalAlerts = Object.values(data.severity_counts).reduce((a, b) => a + b, 0);
+                
+                // Get warning counts
+                const tornadoes = data.type_counts["Tornado Warning"] || 0;
+                const tstorms = data.type_counts["Severe Thunderstorm Warning"] || 0;
+                const pdsTornadoes = data.pds_count || 0;
+                
+                // Check for new warnings to play audio
+                if (tornadoes > previousData.tornadoCount) {
+                    // New tornado warning
+                    if (pdsTornadoes > previousData.pdsCount) {
+                        // New PDS tornado warning (highest priority)
+                        playAudioWithCooldown(pdsAudio, 'lastPdsAudioTime');
+                    } else {
+                        // Regular tornado warning
+                        playAudioWithCooldown(tornadoAudio, 'lastTornadoAudioTime');
+                    }
+                } else if (pdsTornadoes > previousData.pdsCount) {
+                    // New PDS tornado warning without new regular tornado warnings
+                    playAudioWithCooldown(pdsAudio, 'lastPdsAudioTime');
+                }
+                
+                // Update the score
+                scoreValue.textContent = Math.round(data.total_score);
+                
+                // Update colors and effects based on warning types and score
+                if (pdsTornadoes > 0) {
+                    // PDS Tornado Warning - Purple pulse
+                    scoreValue.style.color = "#ff00ff";
+                    scoreBox.style.borderColor = "#ff00ff";
+                    scoreBox.style.animation = "pulse-purple 2s infinite";
+                    scoreBox.classList.remove("pulse"); // Remove old pulse class
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "EXTREME WEATHER ACTIVITY";
+                } else if (tornadoes > 0) {
+                    // Regular Tornado Warning - Red pulse
+                    scoreValue.style.color = "#ff0000";
+                    scoreBox.style.borderColor = "#ff0000";
+                    scoreBox.style.animation = "pulse-red 2s infinite";
+                    scoreBox.classList.remove("pulse"); // Remove old pulse class
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "SEVERE WEATHER ACTIVITY";
+                } else if (tstorms > 0) {
+                    // Severe Thunderstorm Warning - Orange pulse
+                    scoreValue.style.color = "#ff9900";
+                    scoreBox.style.borderColor = "#ff9900";
+                    scoreBox.style.animation = "pulse-orange 2s infinite";
+                    scoreBox.classList.remove("pulse"); // Remove old pulse class
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "SEVERE WEATHER ACTIVITY";
+                } else if (data.total_score >= 50) {
+                    scoreValue.style.color = "#ff00ff"; // Purple for extreme
+                    scoreBox.style.borderColor = "#ff00ff";
+                    scoreBox.style.animation = ""; // Clear any animation
+                    scoreBox.classList.add("extreme-danger");
+                    scoreSubtitle.textContent = "EXTREME WEATHER ACTIVITY";
+                } else if (data.total_score >= 30) {
+                    scoreValue.style.color = "#ff0000"; // Red for severe
+                    scoreBox.style.borderColor = "#ff0000";
+                    scoreBox.style.animation = ""; // Clear any animation
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "SEVERE WEATHER ACTIVITY";
+                } else if (data.total_score >= 15) {
+                    scoreValue.style.color = "#ff9900"; // Orange for moderate
+                    scoreBox.style.borderColor = "#ff9900";
+                    scoreBox.style.animation = ""; // Clear any animation
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "MODERATE WEATHER ACTIVITY";
+                } else if (data.total_score >= 5) {
+                    scoreValue.style.color = "#ffcc00"; // Yellow for minor
+                    scoreBox.style.borderColor = "#ffcc00";
+                    scoreBox.style.animation = ""; // Clear any animation
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "MINOR WEATHER ACTIVITY";
+                } else {
+                    scoreValue.style.color = "#00cc00"; // Green for calm
+                    scoreBox.style.borderColor = "#ffffff";
+                    scoreBox.style.animation = ""; // Clear any animation
+                    scoreBox.classList.remove("extreme-danger");
+                    scoreSubtitle.textContent = "MINIMAL WEATHER ACTIVITY";
+                }
+                
+                 // Show/hide alert count (same as before)
+        if (totalAlerts > 0) {
+            alertCount.textContent = totalAlerts;
+            alertCount.style.display = "flex";
+        } else {
+            alertCount.style.display = "none";
+        }
+
+        // *** ALWAYS update and display warning counts ***
+        warningCounts.style.display = "flex"; // Make warning counts visible
+        pdsCount.textContent = `PDS TORNADO: ${pdsTornadoes}`;
+        tornadoCount.textContent = `TORNADO: ${tornadoes}`;
+        tstormCount.textContent = `SEVERE T-STORM: ${tstorms}`;
+
+        // THE SCORE BOX IS ALWAYS VISIBLE NOW
+        scoreBox.style.display = "flex";
+
+        // Store current data for next comparison (same as before)
+        previousData = {
+            tornadoCount: tornadoes,
+            pdsCount: pdsTornadoes,
+            score: data.total_score
+        };
+
+    } catch (error) {
+        console.error('Error updating score box:', error);
+    }
+}
+
+// Update immediately and then every 10 seconds
+updateScoreBox();
+setInterval(updateScoreBox, 10000);
+    </script>
+</body>
+</html>
